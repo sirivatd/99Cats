@@ -1,0 +1,10 @@
+<%= render "show", cat: @cat %>
+<form action="<%= cat_url(@cat) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type='submit' value="Delete Cat!">
+</form>
+
+<form action="<%= edit_cat_url %>" method="post">
+  <input type="hidden" name="_method" value="get">
+  <input type='submit' value="Edit Cat!">
+</form>

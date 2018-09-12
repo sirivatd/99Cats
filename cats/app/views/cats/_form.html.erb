@@ -1,0 +1,49 @@
+
+  <% if :type == :edit %>
+  <form action="<%= cat_url %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <% else %>
+  <form action="<%= cats_url %>" method="post">
+
+  <% end %>
+  <label for="cat[name]">name</label>
+  <input name="cat[name]" value="<%= @cat.name %>" type="text">
+  <br>
+  <br>
+  <div>
+    <% opposite = (@cat.sex == "M" ? "F" : "M" ) %>
+    <input checked type="radio" id="<%= @cat.sex %>" name="cat[sex]" value="<%= @cat.sex %>" />
+    <label for="<%= @cat.sex %>"><%= @cat.sex %></label>
+    <input type="radio" id="<%= opposite %>" name="cat[sex]" value="<%= opposite %>" />
+    <label for="<%= opposite %>"><%= opposite %></label>
+
+  </div>
+  <select name="cat[color]">
+    <option selected value="<%= @cat.color %>"><%= @cat.color %></option>
+    <option value="red">red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+    <option value="yellow">yellow</option>
+    <option value="white">white</option>
+    <option value="black">black</option>
+    <option value="grey">grey</option>
+  </select>
+
+  <br>
+  <label for="cat[birthdate]">birthdate</label>
+  <input type='date' name="cat[birthdate]" value="<%= @cat.birthdate %>">
+  <br>
+
+  <label for="cat[description]">description</label>
+  <textarea name="cat[description]"><%= @cat.description %></textarea>
+
+  <br>
+  <% if :type == :edit %>
+  <input type="submit" value="Edit Cat">
+  <% else %>
+  <input type="submit" value="Create Cat">
+
+  <% end %>
+
+
+</form>
